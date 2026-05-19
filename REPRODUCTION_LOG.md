@@ -77,10 +77,55 @@ Run from the repository root on the server:
 
 ```bash
 python scripts/build_chisco_text_assets_inputs.py
+python scripts/expand_chisco_tokens.py --backend template
 python labels/gen_embedding.py --config configs/text_embedding.chisco.json
 python labels/emb_preprocessing.py --config configs/token_bank.chisco.json
 python main.py --config configs/train.chisco.json
 ```
+
+After running token expansion, update `configs/text_embedding.chisco.json` so
+`inputs.tokens_file` points to:
+
+```text
+/home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/real_data/Chisco/text_assets/token_explanations.expanded.json
+```
+
+### Added: Chisco Token Expansion Step
+
+- Code added:
+  - `scripts/expand_chisco_tokens.py`
+- Motivation:
+  - The paper describes expanding semantic units into short explanation phrases before embedding to reduce ambiguity and improve generalization.
+  - The first Chisco input builder used the raw token itself as its explanation. That is enough to run the public pipeline, but less close to the paper.
+- Method:
+  - Read `token_explanations.json` and `segmentation.json`.
+  - Collect representative sentence contexts for each token.
+  - Produce `token_explanations.expanded.json`, preserving the same `key` field expected by `labels/gen_embedding.py`.
+  - Two backends are supported:
+    - `template`: offline deterministic context phrase, no external model call.
+    - `openai-compatible`: call a chat model through an OpenAI-compatible API, with template fallback on API/network errors.
+- Expected output:
+  - `/home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/real_data/Chisco/text_assets/token_explanations.expanded.json`
+- Recommended first run:
+
+```bash
+python scripts/expand_chisco_tokens.py --backend template
+```
+
+- Optional LLM run, if an OpenAI-compatible endpoint is available:
+
+```bash
+export OPENAI_API_KEY=...
+export OPENAI_BASE_URL=...
+python scripts/expand_chisco_tokens.py \
+  --backend openai-compatible \
+  --model MODEL_NAME \
+  --resume
+```
+
+- Status:
+  - Script added locally.
+  - Full execution should be run on the server after `build_chisco_text_assets_inputs.py` has generated `token_explanations.json` and `segmentation.json`.
 
 Recommended first training check:
 
@@ -102,6 +147,6 @@ Recommended first training check:
   - `scripts/prepare_chisco_full.py`
   - `scripts/prepare_chisco_minimal.py`
   - `scripts/build_chisco_text_assets_inputs.py`
+  - `scripts/expand_chisco_tokens.py`
   - `scratch/inspect_logs/*`
   - `smoke_brainmosaic.sh`
-
