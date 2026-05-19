@@ -1,0 +1,912 @@
+edf files: 225
+
+reading sub-01 run 1: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-01/eeg/sub-01_ses-01_task-imagine_run-01_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 200 sentences: 200 use: 200
+
+reading sub-01 run 2: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-01/eeg/sub-01_ses-01_task-imagine_run-02_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 3: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-01/eeg/sub-01_ses-01_task-imagine_run-03_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 4: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-01/eeg/sub-01_ses-01_task-imagine_run-04_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 5: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-01/eeg/sub-01_ses-01_task-imagine_run-05_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 6: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-01/eeg/sub-01_ses-01_task-imagine_run-06_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 7: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-01/eeg/sub-01_ses-01_task-imagine_run-07_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 10: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-02/eeg/sub-01_ses-02_task-imagine_run-010_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 11: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-02/eeg/sub-01_ses-02_task-imagine_run-011_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 12: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-02/eeg/sub-01_ses-02_task-imagine_run-012_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 13: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-02/eeg/sub-01_ses-02_task-imagine_run-013_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 14: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-02/eeg/sub-01_ses-02_task-imagine_run-014_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 15: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-02/eeg/sub-01_ses-02_task-imagine_run-015_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 8: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-02/eeg/sub-01_ses-02_task-imagine_run-08_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 9: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-02/eeg/sub-01_ses-02_task-imagine_run-09_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 16: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-03/eeg/sub-01_ses-03_task-imagine_run-016_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 17: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-03/eeg/sub-01_ses-03_task-imagine_run-017_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 18: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-03/eeg/sub-01_ses-03_task-imagine_run-018_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 19: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-03/eeg/sub-01_ses-03_task-imagine_run-019_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-01 run 20: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-03/eeg/sub-01_ses-03_task-imagine_run-020_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 21: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-03/eeg/sub-01_ses-03_task-imagine_run-021_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 22: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-03/eeg/sub-01_ses-03_task-imagine_run-022_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 23: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-03/eeg/sub-01_ses-03_task-imagine_run-023_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 24: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-03/eeg/sub-01_ses-03_task-imagine_run-024_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 25: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-03/eeg/sub-01_ses-03_task-imagine_run-025_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 26: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-04/eeg/sub-01_ses-04_task-imagine_run-026_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 27: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-04/eeg/sub-01_ses-04_task-imagine_run-027_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 28: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-04/eeg/sub-01_ses-04_task-imagine_run-028_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 29: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-04/eeg/sub-01_ses-04_task-imagine_run-029_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 30: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-04/eeg/sub-01_ses-04_task-imagine_run-030_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 31: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-04/eeg/sub-01_ses-04_task-imagine_run-031_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 32: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-04/eeg/sub-01_ses-04_task-imagine_run-032_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 33: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-04/eeg/sub-01_ses-04_task-imagine_run-033_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 34: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-04/eeg/sub-01_ses-04_task-imagine_run-034_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 35: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-04/eeg/sub-01_ses-04_task-imagine_run-035_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 36: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-05/eeg/sub-01_ses-05_task-imagine_run-036_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 37: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-05/eeg/sub-01_ses-05_task-imagine_run-037_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 38: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-05/eeg/sub-01_ses-05_task-imagine_run-038_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 39: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-05/eeg/sub-01_ses-05_task-imagine_run-039_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 40: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-05/eeg/sub-01_ses-05_task-imagine_run-040_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 41: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-05/eeg/sub-01_ses-05_task-imagine_run-041_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 42: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-05/eeg/sub-01_ses-05_task-imagine_run-042_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 43: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-05/eeg/sub-01_ses-05_task-imagine_run-043_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 44: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-05/eeg/sub-01_ses-05_task-imagine_run-044_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-01 run 45: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-01/ses-05/eeg/sub-01_ses-05_task-imagine_run-045_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 31 sentences: 31 use: 31
+
+reading sub-02 run 1: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-01/eeg/sub-02_ses-01_task-imagine_run-01_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 200 sentences: 200 use: 200
+
+reading sub-02 run 2: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-01/eeg/sub-02_ses-01_task-imagine_run-02_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 3: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-01/eeg/sub-02_ses-01_task-imagine_run-03_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 4: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-01/eeg/sub-02_ses-01_task-imagine_run-04_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 5: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-01/eeg/sub-02_ses-01_task-imagine_run-05_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 6: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-01/eeg/sub-02_ses-01_task-imagine_run-06_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 7: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-01/eeg/sub-02_ses-01_task-imagine_run-07_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 10: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-02/eeg/sub-02_ses-02_task-imagine_run-010_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 11: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-02/eeg/sub-02_ses-02_task-imagine_run-011_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 12: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-02/eeg/sub-02_ses-02_task-imagine_run-012_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 13: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-02/eeg/sub-02_ses-02_task-imagine_run-013_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 14: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-02/eeg/sub-02_ses-02_task-imagine_run-014_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 15: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-02/eeg/sub-02_ses-02_task-imagine_run-015_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 16: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-02/eeg/sub-02_ses-02_task-imagine_run-016_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 8: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-02/eeg/sub-02_ses-02_task-imagine_run-08_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 9: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-02/eeg/sub-02_ses-02_task-imagine_run-09_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 17: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-03/eeg/sub-02_ses-03_task-imagine_run-017_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 18: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-03/eeg/sub-02_ses-03_task-imagine_run-018_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 19: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-03/eeg/sub-02_ses-03_task-imagine_run-019_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 20: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-03/eeg/sub-02_ses-03_task-imagine_run-020_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 21: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-03/eeg/sub-02_ses-03_task-imagine_run-021_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 22: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-03/eeg/sub-02_ses-03_task-imagine_run-022_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-02 run 23: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-03/eeg/sub-02_ses-03_task-imagine_run-023_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 154 sentences: 150 use: 150
+
+reading sub-02 run 24: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-03/eeg/sub-02_ses-03_task-imagine_run-024_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 25: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-03/eeg/sub-02_ses-03_task-imagine_run-025_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 26: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-04/eeg/sub-02_ses-04_task-imagine_run-026_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 11 sentences: 150 use: 11
+
+reading sub-02 run 27: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-04/eeg/sub-02_ses-04_task-imagine_run-027_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 7 sentences: 150 use: 7
+
+reading sub-02 run 28: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-04/eeg/sub-02_ses-04_task-imagine_run-028_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 12 sentences: 150 use: 12
+
+reading sub-02 run 29: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-04/eeg/sub-02_ses-04_task-imagine_run-029_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 12 sentences: 150 use: 12
+
+reading sub-02 run 30: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-04/eeg/sub-02_ses-04_task-imagine_run-030_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 12 sentences: 150 use: 12
+
+reading sub-02 run 31: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-04/eeg/sub-02_ses-04_task-imagine_run-031_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 12 sentences: 150 use: 12
+
+reading sub-02 run 32: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-04/eeg/sub-02_ses-04_task-imagine_run-032_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 11 sentences: 150 use: 11
+
+reading sub-02 run 33: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-04/eeg/sub-02_ses-04_task-imagine_run-033_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 34: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-04/eeg/sub-02_ses-04_task-imagine_run-034_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 35: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-035_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 36: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-036_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 37: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-037_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 38: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-038_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 39: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-039_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 40: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-040_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 41: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-041_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 42: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-042_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 43: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-043_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 44: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-044_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-02 run 45: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-02/ses-05/eeg/sub-02_ses-05_task-imagine_run-045_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 12 sentences: 31 use: 12
+
+reading sub-03 run 1: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-01/eeg/sub-03_ses-01_task-imagine_run-01_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 204 sentences: 200 use: 200
+
+reading sub-03 run 2: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-01/eeg/sub-03_ses-01_task-imagine_run-02_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 3: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-01/eeg/sub-03_ses-01_task-imagine_run-03_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 4: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-01/eeg/sub-03_ses-01_task-imagine_run-04_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 5: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-01/eeg/sub-03_ses-01_task-imagine_run-05_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 6: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-01/eeg/sub-03_ses-01_task-imagine_run-06_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 7: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-01/eeg/sub-03_ses-01_task-imagine_run-07_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 10: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-02/eeg/sub-03_ses-02_task-imagine_run-010_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 155 sentences: 150 use: 150
+
+reading sub-03 run 11: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-02/eeg/sub-03_ses-02_task-imagine_run-011_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 12: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-02/eeg/sub-03_ses-02_task-imagine_run-012_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 13: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-02/eeg/sub-03_ses-02_task-imagine_run-013_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 14: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-02/eeg/sub-03_ses-02_task-imagine_run-014_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 15: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-02/eeg/sub-03_ses-02_task-imagine_run-015_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 16: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-02/eeg/sub-03_ses-02_task-imagine_run-016_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 8: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-02/eeg/sub-03_ses-02_task-imagine_run-08_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 9: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-02/eeg/sub-03_ses-02_task-imagine_run-09_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 17: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-03/eeg/sub-03_ses-03_task-imagine_run-017_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 18: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-03/eeg/sub-03_ses-03_task-imagine_run-018_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 19: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-03/eeg/sub-03_ses-03_task-imagine_run-019_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 20: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-03/eeg/sub-03_ses-03_task-imagine_run-020_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 21: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-03/eeg/sub-03_ses-03_task-imagine_run-021_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 22: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-03/eeg/sub-03_ses-03_task-imagine_run-022_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 23: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-03/eeg/sub-03_ses-03_task-imagine_run-023_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 24: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-03/eeg/sub-03_ses-03_task-imagine_run-024_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 25: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-03/eeg/sub-03_ses-03_task-imagine_run-025_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 26: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-03/eeg/sub-03_ses-03_task-imagine_run-026_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 27: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-04/eeg/sub-03_ses-04_task-imagine_run-027_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 28: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-04/eeg/sub-03_ses-04_task-imagine_run-028_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 29: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-04/eeg/sub-03_ses-04_task-imagine_run-029_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 30: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-04/eeg/sub-03_ses-04_task-imagine_run-030_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 31: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-04/eeg/sub-03_ses-04_task-imagine_run-031_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 32: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-04/eeg/sub-03_ses-04_task-imagine_run-032_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 33: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-04/eeg/sub-03_ses-04_task-imagine_run-033_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 34: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-04/eeg/sub-03_ses-04_task-imagine_run-034_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 35: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-04/eeg/sub-03_ses-04_task-imagine_run-035_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 36: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-04/eeg/sub-03_ses-04_task-imagine_run-036_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 37: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-05/eeg/sub-03_ses-05_task-imagine_run-037_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 38: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-05/eeg/sub-03_ses-05_task-imagine_run-038_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 39: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-05/eeg/sub-03_ses-05_task-imagine_run-039_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 40: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-05/eeg/sub-03_ses-05_task-imagine_run-040_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 41: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-05/eeg/sub-03_ses-05_task-imagine_run-041_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 42: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-05/eeg/sub-03_ses-05_task-imagine_run-042_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 43: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-05/eeg/sub-03_ses-05_task-imagine_run-043_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-03 run 44: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-05/eeg/sub-03_ses-05_task-imagine_run-044_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-03 run 45: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-03/ses-05/eeg/sub-03_ses-05_task-imagine_run-045_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 31 sentences: 31 use: 31
+
+reading sub-04 run 1: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-01/eeg/sub-04_ses-01_task-imagine_run-01_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 200 sentences: 200 use: 200
+
+reading sub-04 run 2: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-01/eeg/sub-04_ses-01_task-imagine_run-02_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 3: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-01/eeg/sub-04_ses-01_task-imagine_run-03_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 4: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-01/eeg/sub-04_ses-01_task-imagine_run-04_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 5: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-01/eeg/sub-04_ses-01_task-imagine_run-05_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 6: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-01/eeg/sub-04_ses-01_task-imagine_run-06_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 7: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-01/eeg/sub-04_ses-01_task-imagine_run-07_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 10: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-02/eeg/sub-04_ses-02_task-imagine_run-010_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 11: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-02/eeg/sub-04_ses-02_task-imagine_run-011_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 12: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-02/eeg/sub-04_ses-02_task-imagine_run-012_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 13: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-02/eeg/sub-04_ses-02_task-imagine_run-013_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 14: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-02/eeg/sub-04_ses-02_task-imagine_run-014_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 8: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-02/eeg/sub-04_ses-02_task-imagine_run-08_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 9: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-02/eeg/sub-04_ses-02_task-imagine_run-09_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 15: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-03/eeg/sub-04_ses-03_task-imagine_run-015_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 16: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-03/eeg/sub-04_ses-03_task-imagine_run-016_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 17: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-03/eeg/sub-04_ses-03_task-imagine_run-017_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-04 run 18: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-03/eeg/sub-04_ses-03_task-imagine_run-018_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 19: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-03/eeg/sub-04_ses-03_task-imagine_run-019_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 20: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-03/eeg/sub-04_ses-03_task-imagine_run-020_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 21: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-03/eeg/sub-04_ses-03_task-imagine_run-021_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 22: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-04/eeg/sub-04_ses-04_task-imagine_run-022_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 23: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-04/eeg/sub-04_ses-04_task-imagine_run-023_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 24: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-04/eeg/sub-04_ses-04_task-imagine_run-024_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 25: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-04/eeg/sub-04_ses-04_task-imagine_run-025_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 26: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-04/eeg/sub-04_ses-04_task-imagine_run-026_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 27: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-04/eeg/sub-04_ses-04_task-imagine_run-027_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 28: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-04/eeg/sub-04_ses-04_task-imagine_run-028_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 29: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-05/eeg/sub-04_ses-05_task-imagine_run-029_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 30: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-05/eeg/sub-04_ses-05_task-imagine_run-030_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 31: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-05/eeg/sub-04_ses-05_task-imagine_run-031_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 32: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-05/eeg/sub-04_ses-05_task-imagine_run-032_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 33: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-05/eeg/sub-04_ses-05_task-imagine_run-033_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 34: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-05/eeg/sub-04_ses-05_task-imagine_run-034_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 35: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-05/eeg/sub-04_ses-05_task-imagine_run-035_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 36: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-05/eeg/sub-04_ses-05_task-imagine_run-036_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 37: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-06/eeg/sub-04_ses-06_task-imagine_run-037_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 38: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-06/eeg/sub-04_ses-06_task-imagine_run-038_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 39: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-06/eeg/sub-04_ses-06_task-imagine_run-039_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 40: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-06/eeg/sub-04_ses-06_task-imagine_run-040_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 41: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-06/eeg/sub-04_ses-06_task-imagine_run-041_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 42: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-06/eeg/sub-04_ses-06_task-imagine_run-042_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 43: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-06/eeg/sub-04_ses-06_task-imagine_run-043_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 151 sentences: 150 use: 150
+
+reading sub-04 run 44: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-06/eeg/sub-04_ses-06_task-imagine_run-044_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-04 run 45: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-04/ses-06/eeg/sub-04_ses-06_task-imagine_run-045_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 31 sentences: 31 use: 31
+
+reading sub-05 run 1: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-01/eeg/sub-05_ses-01_task-imagine_run-01_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 200 sentences: 200 use: 200
+
+reading sub-05 run 2: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-01/eeg/sub-05_ses-01_task-imagine_run-02_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 3: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-01/eeg/sub-05_ses-01_task-imagine_run-03_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 4: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-01/eeg/sub-05_ses-01_task-imagine_run-04_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 149 sentences: 150 use: 149
+
+reading sub-05 run 5: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-01/eeg/sub-05_ses-01_task-imagine_run-05_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 6: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-01/eeg/sub-05_ses-01_task-imagine_run-06_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 7: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-01/eeg/sub-05_ses-01_task-imagine_run-07_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 10: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-02/eeg/sub-05_ses-02_task-imagine_run-010_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 11: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-02/eeg/sub-05_ses-02_task-imagine_run-011_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 290 sentences: 150 use: 150
+
+reading sub-05 run 12: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-02/eeg/sub-05_ses-02_task-imagine_run-012_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 13: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-02/eeg/sub-05_ses-02_task-imagine_run-013_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 14: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-02/eeg/sub-05_ses-02_task-imagine_run-014_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 8: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-02/eeg/sub-05_ses-02_task-imagine_run-08_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 9: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-02/eeg/sub-05_ses-02_task-imagine_run-09_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 15: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-03/eeg/sub-05_ses-03_task-imagine_run-015_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 16: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-03/eeg/sub-05_ses-03_task-imagine_run-016_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 17: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-03/eeg/sub-05_ses-03_task-imagine_run-017_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 18: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-03/eeg/sub-05_ses-03_task-imagine_run-018_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 19: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-03/eeg/sub-05_ses-03_task-imagine_run-019_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-05 run 20: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-03/eeg/sub-05_ses-03_task-imagine_run-020_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 21: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-03/eeg/sub-05_ses-03_task-imagine_run-021_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 22: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-04/eeg/sub-05_ses-04_task-imagine_run-022_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 23: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-04/eeg/sub-05_ses-04_task-imagine_run-023_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 24: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-04/eeg/sub-05_ses-04_task-imagine_run-024_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 25: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-04/eeg/sub-05_ses-04_task-imagine_run-025_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 151 sentences: 150 use: 150
+
+reading sub-05 run 26: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-04/eeg/sub-05_ses-04_task-imagine_run-026_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 27: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-04/eeg/sub-05_ses-04_task-imagine_run-027_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 28: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-04/eeg/sub-05_ses-04_task-imagine_run-028_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 29: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-05/eeg/sub-05_ses-05_task-imagine_run-029_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 30: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-05/eeg/sub-05_ses-05_task-imagine_run-030_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 31: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-05/eeg/sub-05_ses-05_task-imagine_run-031_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-05 run 32: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-05/eeg/sub-05_ses-05_task-imagine_run-032_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 33: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-05/eeg/sub-05_ses-05_task-imagine_run-033_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 34: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-05/eeg/sub-05_ses-05_task-imagine_run-034_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 35: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-05/eeg/sub-05_ses-05_task-imagine_run-035_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 36: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-05/eeg/sub-05_ses-05_task-imagine_run-036_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 37: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-06/eeg/sub-05_ses-06_task-imagine_run-037_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 38: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-06/eeg/sub-05_ses-06_task-imagine_run-038_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-05 run 39: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-06/eeg/sub-05_ses-06_task-imagine_run-039_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 40: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-06/eeg/sub-05_ses-06_task-imagine_run-040_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 41: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-06/eeg/sub-05_ses-06_task-imagine_run-041_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-05 run 42: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-06/eeg/sub-05_ses-06_task-imagine_run-042_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 43: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-06/eeg/sub-05_ses-06_task-imagine_run-043_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 150 sentences: 150 use: 150
+
+reading sub-05 run 44: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-06/eeg/sub-05_ses-06_task-imagine_run-044_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 152 sentences: 150 use: 150
+
+reading sub-05 run 45: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/Chiso/sub-05/ses-06/eeg/sub-05_ses-06_task-imagine_run-045_eeg.edf
+NOTE: pick_types() is a legacy function. New code should use inst.pick(...).
+annotations: 31 sentences: 31 use: 31
+
+records: 32405
+skipped: 0
+
+saved:
+train: 25924 /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/real_data/Chisco/train.pt
+val: 6481 /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/real_data/Chisco/val.pt
+meta: /home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/real_data/Chisco/meta.pt
+example eeg: (132, 1000) torch.float16
+example sentence: 有围栏的院子，允许养宠物
+example words: ['有', '围栏', '的', '院子', '允许', '养', '宠物']
