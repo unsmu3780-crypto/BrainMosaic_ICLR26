@@ -150,6 +150,43 @@ bash scripts/run_chisco_text_pipeline.sh openai-compatible
 - Note:
   - For the paper-like reproduction, rerun the text pipeline after generating `token_explanations.expanded.json`, then rebuild the token bank.
 
+### Added: Chisco Token-Bank Threshold Sweep and Training Job
+
+- Code added:
+  - `scripts/run_chisco_threshold_sweep_and_train.sh`
+- Motivation:
+  - The public repository provides `cluster_sim_threshold=0.78` in `configs/token_bank.example.json` and uses `0.78` as the code default, but no stronger paper-level fixed threshold was found in the public docs.
+  - The first Chisco token bank produced `187` clusters from `5869` expanded token embeddings, so threshold sensitivity should be checked before long training.
+- Method:
+  - Sweep token-bank thresholds with default values: `0.78 0.85 0.90 0.95`.
+  - For each threshold:
+    - Write a threshold-specific token-bank config under `configs/token_bank.chisco.t*.json`.
+    - Build a threshold-specific token bank under `text_assets/token_bank_t*/`.
+    - Write a threshold-specific smoke training config under `configs/train.chisco.smoke.t*.json`.
+    - Run short training/validation, default `1` epoch with batch size `2`.
+    - Save summary JSON/TSV under `outputs/chisco_threshold_sweep/`.
+  - If `RUN_FULL=1`, select the best smoke result by matching accuracy and mean cosine, write `configs/train.chisco.full.t*.json`, and start full training.
+- Recommended server command:
+
+```bash
+bash scripts/run_chisco_threshold_sweep_and_train.sh
+```
+
+- Useful overrides:
+
+```bash
+RUN_FULL=0 bash scripts/run_chisco_threshold_sweep_and_train.sh
+THRESHOLDS="0.78 0.85 0.90 0.95" SMOKE_EPOCHS=1 RUN_FULL=0 bash scripts/run_chisco_threshold_sweep_and_train.sh
+BEST_THRESHOLD=0.90 FULL_EPOCHS=50 FULL_BATCH_SIZE=32 bash scripts/run_chisco_threshold_sweep_and_train.sh
+```
+
+- Expected outputs:
+  - `outputs/chisco_threshold_sweep/sweep_summary.json`
+  - `outputs/chisco_threshold_sweep/sweep_summary.tsv`
+  - `outputs/chisco_threshold_sweep/t*.summary.json`
+  - `outputs/chisco_full/t*/epoch_history.json`
+  - `outputs/chisco_full/t*/best_summary.json`
+
 Recommended first training check:
 
 - Set `epochs` to `1` in `configs/train.chisco.json`.
