@@ -1,4 +1,5 @@
 import argparse
+import inspect
 import json
 from pathlib import Path
 from typing import List
@@ -32,6 +33,25 @@ def install_torch_compiler_shim():
 
 
 install_torch_compiler_shim()
+
+
+def install_load_state_dict_assign_shim():
+    try:
+        signature = inspect.signature(torch.nn.Module.load_state_dict)
+    except (TypeError, ValueError):
+        return
+    if "assign" in signature.parameters:
+        return
+
+    original_load_state_dict = torch.nn.Module.load_state_dict
+
+    def load_state_dict_compat(self, state_dict, strict=True, assign=False):
+        return original_load_state_dict(self, state_dict, strict=strict)
+
+    torch.nn.Module.load_state_dict = load_state_dict_compat
+
+
+install_load_state_dict_assign_shim()
 
 from transformers import AutoModel, AutoTokenizer
 
