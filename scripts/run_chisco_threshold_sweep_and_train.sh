@@ -9,6 +9,8 @@ FULL_EPOCHS="${FULL_EPOCHS:-50}"
 FULL_BATCH_SIZE="${FULL_BATCH_SIZE:-32}"
 FULL_NUM_WORKERS="${FULL_NUM_WORKERS:-4}"
 RUN_FULL="${RUN_FULL:-1}"
+FULL_MODE="${FULL_MODE:-baseline_and_best}"
+BASELINE_THRESHOLD="${BASELINE_THRESHOLD:-0.78}"
 BASE_TRAIN_CONFIG="${BASE_TRAIN_CONFIG:-configs/train.chisco.json}"
 BASE_TOKEN_CONFIG="${BASE_TOKEN_CONFIG:-configs/token_bank.chisco.json}"
 SWEEP_ROOT="${SWEEP_ROOT:-outputs/chisco_threshold_sweep}"
@@ -18,7 +20,7 @@ mkdir -p "${SWEEP_ROOT}" "${FULL_ROOT}"
 
 echo "[INFO] thresholds: ${THRESHOLDS}"
 echo "[INFO] smoke epochs=${SMOKE_EPOCHS} batch_size=${SMOKE_BATCH_SIZE} num_workers=${SMOKE_NUM_WORKERS}"
-echo "[INFO] full epochs=${FULL_EPOCHS} batch_size=${FULL_BATCH_SIZE} num_workers=${FULL_NUM_WORKERS} run_full=${RUN_FULL}"
+echo "[INFO] full epochs=${FULL_EPOCHS} batch_size=${FULL_BATCH_SIZE} num_workers=${FULL_NUM_WORKERS} run_full=${RUN_FULL} full_mode=${FULL_MODE}"
 
 for threshold in ${THRESHOLDS}; do
   tag="t${threshold//./p}"
@@ -144,7 +146,7 @@ if [[ "${RUN_FULL}" != "1" ]]; then
   exit 0
 fi
 
-python - <<'PY'
+FULL_MODE="${FULL_MODE}" BASELINE_THRESHOLD="${BASELINE_THRESHOLD}" python - <<'PY'
 import json
 import os
 from pathlib import Path
@@ -155,46 +157,60 @@ if not records:
     raise SystemExit("No sweep records available for full training")
 
 chosen = os.environ.get("BEST_THRESHOLD", "").strip()
+best = records[0]
 if chosen:
-    selected = next((r for r in records if str(r["threshold"]) == chosen), None)
-    if selected is None:
+    best = next((r for r in records if str(r["threshold"]) == chosen), None)
+    if best is None:
         raise SystemExit(f"BEST_THRESHOLD={chosen} not found in sweep records")
-else:
-    selected = records[0]
 
-tag = selected["tag"]
-base_cfg = json.load(open(os.environ.get("BASE_TRAIN_CONFIG", "configs/train.chisco.json"), "r", encoding="utf-8"))
-base_cfg["data"]["token_path"] = selected["token_bank_dir"]
-base_cfg["runtime"]["output_dir"] = str(Path(os.environ.get("FULL_ROOT", "outputs/chisco_full")) / tag)
-base_cfg["runtime"]["batch_size"] = int(os.environ.get("FULL_BATCH_SIZE", "32"))
-base_cfg["runtime"]["num_workers"] = int(os.environ.get("FULL_NUM_WORKERS", "4"))
-base_cfg["train"]["epochs"] = int(os.environ.get("FULL_EPOCHS", "50"))
-base_cfg["train"]["lr_drop"] = int(os.environ.get("FULL_EPOCHS", "50"))
-base_cfg.setdefault("notes", {})
-base_cfg["notes"]["token_bank_threshold"] = selected["threshold"]
-base_cfg["notes"]["run_type"] = "full_training_after_threshold_sweep"
-out_path = Path("configs") / f"train.chisco.full.{tag}.json"
-json.dump(base_cfg, out_path.open("w", encoding="utf-8"), ensure_ascii=False, indent=2)
-print(out_path)
+selected = []
+full_mode = os.environ.get("FULL_MODE", "baseline_and_best")
+baseline_threshold = os.environ.get("BASELINE_THRESHOLD", "0.78")
+if full_mode == "best_only":
+    selected = [best]
+elif full_mode == "baseline_and_best":
+    baseline = next((r for r in records if str(r["threshold"]) == baseline_threshold), None)
+    if baseline is None:
+        raise SystemExit(f"BASELINE_THRESHOLD={baseline_threshold} not found in sweep records")
+    selected = [baseline]
+    if str(best["threshold"]) != str(baseline["threshold"]):
+        selected.append(best)
+else:
+    raise SystemExit(f"Unsupported FULL_MODE={full_mode}")
+
+out_paths = []
+for record in selected:
+    tag = record["tag"]
+    base_cfg = json.load(open(os.environ.get("BASE_TRAIN_CONFIG", "configs/train.chisco.json"), "r", encoding="utf-8"))
+    base_cfg["data"]["token_path"] = record["token_bank_dir"]
+    base_cfg["runtime"]["output_dir"] = str(Path(os.environ.get("FULL_ROOT", "outputs/chisco_full")) / tag)
+    base_cfg["runtime"]["batch_size"] = int(os.environ.get("FULL_BATCH_SIZE", "32"))
+    base_cfg["runtime"]["num_workers"] = int(os.environ.get("FULL_NUM_WORKERS", "4"))
+    base_cfg["train"]["epochs"] = int(os.environ.get("FULL_EPOCHS", "50"))
+    base_cfg["train"]["lr_drop"] = int(os.environ.get("FULL_EPOCHS", "50"))
+    base_cfg.setdefault("notes", {})
+    base_cfg["notes"]["token_bank_threshold"] = record["threshold"]
+    base_cfg["notes"]["run_type"] = "full_training_after_threshold_sweep"
+    base_cfg["notes"]["full_mode"] = full_mode
+    base_cfg["notes"]["baseline_threshold"] = baseline_threshold
+    base_cfg["notes"]["selected_by"] = "baseline" if str(record["threshold"]) == baseline_threshold else "best_sweep"
+    out_path = Path("configs") / f"train.chisco.full.{tag}.json"
+    json.dump(base_cfg, out_path.open("w", encoding="utf-8"), ensure_ascii=False, indent=2)
+    out_paths.append(str(out_path))
+
+Path(os.environ.get("FULL_ROOT", "outputs/chisco_full")).mkdir(parents=True, exist_ok=True)
+with open(Path(os.environ.get("FULL_ROOT", "outputs/chisco_full")) / "selected_full_configs.txt", "w", encoding="utf-8") as f:
+    for path in out_paths:
+        f.write(path + "\n")
+print("\n".join(out_paths))
 PY
 
-best_tag="$(python - <<'PY'
-import json
-import os
-from pathlib import Path
-
-records = json.load(open(Path(os.environ.get("SWEEP_ROOT", "outputs/chisco_threshold_sweep")) / "sweep_summary.json", "r", encoding="utf-8"))
-chosen = os.environ.get("BEST_THRESHOLD", "").strip()
-if chosen:
-    selected = next(r for r in records if str(r["threshold"]) == chosen)
-else:
-    selected = records[0]
-print(selected["tag"])
-PY
-)"
-
-full_cfg="configs/train.chisco.full.${best_tag}.json"
-full_log="${FULL_ROOT}/${best_tag}.log"
 mkdir -p "${FULL_ROOT}"
-echo "[FULL] config=${full_cfg}"
-python main.py --config "${full_cfg}" 2>&1 | tee "${full_log}"
+while IFS= read -r full_cfg; do
+  [[ -n "${full_cfg}" ]] || continue
+  full_tag="$(basename "${full_cfg}" .json)"
+  full_tag="${full_tag#train.chisco.full.}"
+  full_log="${FULL_ROOT}/${full_tag}.log"
+  echo "[FULL] config=${full_cfg}"
+  python main.py --config "${full_cfg}" 2>&1 | tee "${full_log}"
+done < "${FULL_ROOT}/selected_full_configs.txt"

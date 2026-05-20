@@ -7,6 +7,7 @@
 # Override defaults at submit time if needed:
 #   RUN_FULL=0 dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
 #   THRESHOLDS="0.78 0.85 0.90 0.95" FULL_EPOCHS=50 FULL_BATCH_SIZE=16 dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
+#   FULL_MODE=best_only dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
 #
 # This job assumes:
 #   1. Chisco EEG splits already exist under the configured data root.
@@ -94,15 +95,18 @@ export PATH="$(dirname "$PYTHON_BIN"):$PATH"
 # Defaults:
 #   - Sweep four thresholds, including the author's public default 0.78.
 #   - Run 1-epoch smoke validation for each threshold.
-#   - Then run full training with the best smoke threshold.
+#   - Then run full training for the 0.78 baseline and the best smoke threshold.
 #
 # Set RUN_FULL=0 if you only want the sweep summary and no full training.
+# Set FULL_MODE=best_only if you only want the best smoke threshold.
 
 export THRESHOLDS="${THRESHOLDS:-0.78 0.85 0.90 0.95}"
 export SMOKE_EPOCHS="${SMOKE_EPOCHS:-1}"
 export SMOKE_BATCH_SIZE="${SMOKE_BATCH_SIZE:-2}"
 export SMOKE_NUM_WORKERS="${SMOKE_NUM_WORKERS:-0}"
 export RUN_FULL="${RUN_FULL:-1}"
+export FULL_MODE="${FULL_MODE:-baseline_and_best}"
+export BASELINE_THRESHOLD="${BASELINE_THRESHOLD:-0.78}"
 export FULL_EPOCHS="${FULL_EPOCHS:-50}"
 export FULL_BATCH_SIZE="${FULL_BATCH_SIZE:-32}"
 export FULL_NUM_WORKERS="${FULL_NUM_WORKERS:-4}"
@@ -128,7 +132,7 @@ export BEST_THRESHOLD="${BEST_THRESHOLD:-}"
   echo "[INFO] pipeline script: $PIPELINE_SCRIPT"
   echo "[INFO] thresholds: $THRESHOLDS"
   echo "[INFO] smoke: epochs=$SMOKE_EPOCHS batch_size=$SMOKE_BATCH_SIZE num_workers=$SMOKE_NUM_WORKERS"
-  echo "[INFO] full: run_full=$RUN_FULL epochs=$FULL_EPOCHS batch_size=$FULL_BATCH_SIZE num_workers=$FULL_NUM_WORKERS best_threshold=${BEST_THRESHOLD:-auto}"
+  echo "[INFO] full: run_full=$RUN_FULL mode=$FULL_MODE baseline_threshold=$BASELINE_THRESHOLD epochs=$FULL_EPOCHS batch_size=$FULL_BATCH_SIZE num_workers=$FULL_NUM_WORKERS best_threshold=${BEST_THRESHOLD:-auto}"
   echo "[INFO] sweep root: $SWEEP_ROOT"
   echo "[INFO] full root: $FULL_ROOT"
   echo "[INFO] loaded modules:"

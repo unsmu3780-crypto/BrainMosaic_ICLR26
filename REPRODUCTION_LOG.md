@@ -166,7 +166,8 @@ bash scripts/run_chisco_text_pipeline.sh openai-compatible
     - Write a threshold-specific smoke training config under `configs/train.chisco.smoke.t*.json`.
     - Run short training/validation, default `1` epoch with batch size `2`.
     - Save summary JSON/TSV under `outputs/chisco_threshold_sweep/`.
-  - If `RUN_FULL=1`, select the best smoke result by matching accuracy and mean cosine, write `configs/train.chisco.full.t*.json`, and start full training.
+  - If `RUN_FULL=1`, run full training for the `0.78` public-code baseline and the best smoke result selected by matching accuracy and mean cosine.
+  - If the best smoke threshold is also `0.78`, run full training only once to avoid duplicate work.
 - Recommended server command:
 
 ```bash
@@ -187,6 +188,7 @@ THRESHOLDS="0.78 0.85 0.90 0.95" SMOKE_EPOCHS=1 RUN_FULL=0 bash scripts/run_chis
 BEST_THRESHOLD=0.90 FULL_EPOCHS=50 FULL_BATCH_SIZE=32 bash scripts/run_chisco_threshold_sweep_and_train.sh
 RUN_FULL=0 dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
 BEST_THRESHOLD=0.90 FULL_EPOCHS=50 FULL_BATCH_SIZE=32 dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
+FULL_MODE=best_only dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
 ```
 
 - Expected outputs:
@@ -195,6 +197,7 @@ BEST_THRESHOLD=0.90 FULL_EPOCHS=50 FULL_BATCH_SIZE=32 dsub -s scripts/dsub_chisc
   - `outputs/chisco_threshold_sweep/t*.summary.json`
   - `outputs/chisco_full/t*/epoch_history.json`
   - `outputs/chisco_full/t*/best_summary.json`
+  - `outputs/chisco_full/selected_full_configs.txt`
 
 Recommended first training check:
 
