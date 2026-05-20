@@ -162,6 +162,7 @@ Recommended first training check:
 - Method:
   - Add a minimal `torch.compiler` shim before importing `transformers`.
   - The shim only provides `disable()` and `is_compiling()`, enough for model import paths that check the API.
+  - Add missing float8 dtype names expected by newer `transformers` import-time dtype tables, mapped to `torch.uint8` only to allow import on `torch 2.0.0`.
   - Tensor computation, CUDA execution, model loading, mean pooling, 256-d truncation, and L2 normalization are unchanged.
 - Expected effect:
   - Allow `python labels/gen_embedding.py --config configs/text_embedding.chisco.json` to proceed on the current ARM server environment without upgrading PyTorch.

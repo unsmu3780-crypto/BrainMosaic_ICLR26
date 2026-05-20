@@ -9,7 +9,11 @@ import torch.nn.functional as F
 
 
 def install_torch_compiler_shim():
-    """Provide the small torch.compiler API surface used by newer Transformers."""
+    """Provide the small newer-Torch API surface used while importing Qwen3."""
+    for dtype_name in ("float8_e4m3fn", "float8_e5m2", "float8_e4m3fnuz", "float8_e5m2fnuz"):
+        if not hasattr(torch, dtype_name):
+            setattr(torch, dtype_name, torch.uint8)
+
     if hasattr(torch, "compiler"):
         return
 
