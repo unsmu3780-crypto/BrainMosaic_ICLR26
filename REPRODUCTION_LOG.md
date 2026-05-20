@@ -164,7 +164,7 @@ bash scripts/run_chisco_text_pipeline.sh openai-compatible
     - Write a threshold-specific token-bank config under `configs/token_bank.chisco.t*.json`.
     - Build a threshold-specific token bank under `text_assets/token_bank_t*/`.
     - Write a threshold-specific smoke training config under `configs/train.chisco.smoke.t*.json`.
-    - Run short training/validation, default `1` epoch with batch size `2`.
+    - Run short training/validation, default `5` epochs with batch size `8`.
     - Save summary JSON/TSV under `outputs/chisco_threshold_sweep/`.
   - If `RUN_FULL=1`, run full training for the `0.78` public-code baseline and the best smoke result selected by matching accuracy and mean cosine.
   - If the best smoke threshold is also `0.78`, run full training only once to avoid duplicate work.
@@ -179,6 +179,11 @@ bash scripts/run_chisco_threshold_sweep_and_train.sh
 ```bash
 dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
 ```
+
+- DSUB default resources:
+  - `cpu=16;gpu=1;mem=120000`
+  - Explicitly activates the `BrainMosaic` conda environment before running the pipeline.
+  - Training uses GPU through `device=cuda` from `configs/train.chisco.json`.
 
 - Useful overrides:
 

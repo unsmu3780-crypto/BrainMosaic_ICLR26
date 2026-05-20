@@ -18,7 +18,7 @@
 #DSUB -n chisco_threshold_sweep
 #DSUB -N 1
 #DSUB -A root.project.P23Z10200N0876_tmp
-#DSUB -R "cpu=8;gpu=1;mem=80000"
+#DSUB -R "cpu=16;gpu=1;mem=120000"
 #DSUB -oo /home/share/huadjyin/home/sunmengmeng/work/EEG/BrainMosaic_ICLR26/log/submit/%J.chisco_threshold_sweep.out
 #DSUB -eo /home/share/huadjyin/home/sunmengmeng/work/EEG/BrainMosaic_ICLR26/log/submit/%J.chisco_threshold_sweep.err
 
@@ -59,21 +59,31 @@ module load "${CUDNN_MODULE:-libs/cudnn/8.8.1_cuda11}"
 module load "${OPENBLAS_MODULE:-libs/openblas/0.3.26_gcc9.3.0}"
 
 # Keep CPU thread use aligned with the requested CPU count.
-export OMP_NUM_THREADS="${OMP_NUM_THREADS:-8}"
-export MKL_NUM_THREADS="${MKL_NUM_THREADS:-8}"
-export OPENBLAS_NUM_THREADS="${OPENBLAS_NUM_THREADS:-8}"
-export NUMEXPR_NUM_THREADS="${NUMEXPR_NUM_THREADS:-8}"
+export OMP_NUM_THREADS="${OMP_NUM_THREADS:-16}"
+export MKL_NUM_THREADS="${MKL_NUM_THREADS:-16}"
+export OPENBLAS_NUM_THREADS="${OPENBLAS_NUM_THREADS:-16}"
+export NUMEXPR_NUM_THREADS="${NUMEXPR_NUM_THREADS:-16}"
 export PYTHONUNBUFFERED=1
 
 # -----------------------------
 # 3. Python environment
 # -----------------------------
 #
-# Use the known BrainMosaic conda environment directly. This avoids depending on
-# the shell's conda activation setup inside a batch job.
+# Activate the known BrainMosaic conda environment explicitly so logs and child
+# processes show the expected environment.
 
+CONDA_SH="${CONDA_SH:-/home/share/huadjyin/home/sunmengmeng/.conda/etc/profile.d/conda.sh}"
+CONDA_ENV="${CONDA_ENV:-BrainMosaic}"
 PYTHON_BIN="${PYTHON_BIN:-/home/share/huadjyin/home/sunmengmeng/.conda/envs/BrainMosaic/bin/python}"
 PIPELINE_SCRIPT="$JOB_PATH/scripts/run_chisco_threshold_sweep_and_train.sh"
+
+if [[ ! -f "$CONDA_SH" ]]; then
+  echo "[ERROR] conda init script not found: $CONDA_SH" | tee -a "$RUN_LOG"
+  exit 1
+fi
+
+source "$CONDA_SH"
+conda activate "$CONDA_ENV"
 
 if [[ ! -x "$PYTHON_BIN" ]]; then
   echo "[ERROR] PYTHON_BIN is not executable: $PYTHON_BIN" | tee -a "$RUN_LOG"
@@ -101,8 +111,8 @@ export PATH="$(dirname "$PYTHON_BIN"):$PATH"
 # Set FULL_MODE=best_only if you only want the best smoke threshold.
 
 export THRESHOLDS="${THRESHOLDS:-0.78 0.85 0.90 0.95}"
-export SMOKE_EPOCHS="${SMOKE_EPOCHS:-1}"
-export SMOKE_BATCH_SIZE="${SMOKE_BATCH_SIZE:-2}"
+export SMOKE_EPOCHS="${SMOKE_EPOCHS:-5}"
+export SMOKE_BATCH_SIZE="${SMOKE_BATCH_SIZE:-8}"
 export SMOKE_NUM_WORKERS="${SMOKE_NUM_WORKERS:-0}"
 export RUN_FULL="${RUN_FULL:-1}"
 export FULL_MODE="${FULL_MODE:-baseline_and_best}"
@@ -128,6 +138,8 @@ export BEST_THRESHOLD="${BEST_THRESHOLD:-}"
   echo "[INFO] start time: $(date '+%F %T')"
   echo "[INFO] host: $HOST_SHORT"
   echo "[INFO] job path: $JOB_PATH"
+  echo "[INFO] conda env: $CONDA_ENV"
+  echo "[INFO] CONDA_PREFIX: ${CONDA_PREFIX:-}"
   echo "[INFO] python: $PYTHON_BIN"
   echo "[INFO] pipeline script: $PIPELINE_SCRIPT"
   echo "[INFO] thresholds: $THRESHOLDS"
