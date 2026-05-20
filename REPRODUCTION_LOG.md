@@ -154,6 +154,7 @@ bash scripts/run_chisco_text_pipeline.sh openai-compatible
 
 - Code added:
   - `scripts/run_chisco_threshold_sweep_and_train.sh`
+  - `scripts/dsub_chisco_threshold_sweep_and_train.sh`
 - Motivation:
   - The public repository provides `cluster_sim_threshold=0.78` in `configs/token_bank.example.json` and uses `0.78` as the code default, but no stronger paper-level fixed threshold was found in the public docs.
   - The first Chisco token bank produced `187` clusters from `5869` expanded token embeddings, so threshold sensitivity should be checked before long training.
@@ -172,12 +173,20 @@ bash scripts/run_chisco_text_pipeline.sh openai-compatible
 bash scripts/run_chisco_threshold_sweep_and_train.sh
 ```
 
+- Recommended DSUB submission:
+
+```bash
+dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
+```
+
 - Useful overrides:
 
 ```bash
 RUN_FULL=0 bash scripts/run_chisco_threshold_sweep_and_train.sh
 THRESHOLDS="0.78 0.85 0.90 0.95" SMOKE_EPOCHS=1 RUN_FULL=0 bash scripts/run_chisco_threshold_sweep_and_train.sh
 BEST_THRESHOLD=0.90 FULL_EPOCHS=50 FULL_BATCH_SIZE=32 bash scripts/run_chisco_threshold_sweep_and_train.sh
+RUN_FULL=0 dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
+BEST_THRESHOLD=0.90 FULL_EPOCHS=50 FULL_BATCH_SIZE=32 dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
 ```
 
 - Expected outputs:
