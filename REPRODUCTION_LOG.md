@@ -94,6 +94,7 @@ After running token expansion, update `configs/text_embedding.chisco.json` so
 
 - Code added:
   - `scripts/expand_chisco_tokens.py`
+  - `scripts/run_chisco_text_pipeline.sh`
 - Motivation:
   - The paper describes expanding semantic units into short explanation phrases before embedding to reduce ambiguity and improve generalization.
   - The first Chisco input builder used the raw token itself as its explanation. That is enough to run the public pipeline, but less close to the paper.
@@ -104,12 +105,15 @@ After running token expansion, update `configs/text_embedding.chisco.json` so
   - Two backends are supported:
     - `template`: offline deterministic context phrase, no external model call.
     - `openai-compatible`: call a chat model through an OpenAI-compatible API, with template fallback on API/network errors.
+  - The Chisco config builder now points `configs/text_embedding.chisco.json` to `token_explanations.expanded.json` by default, so regenerated configs follow the paper-like token-expansion path.
+  - The Chisco config builder now defaults `model.name_or_path` to the local server model path:
+    `/home/share/huadjyin/home/sunmengmeng/work/EEG/BrainMosaic_ICLR26/models/Qwen3-Embedding-8B`.
 - Expected output:
   - `/home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/real_data/Chisco/text_assets/token_explanations.expanded.json`
 - Recommended first run:
 
 ```bash
-python scripts/expand_chisco_tokens.py --backend template
+bash scripts/run_chisco_text_pipeline.sh template
 ```
 
 - Optional LLM run, if an OpenAI-compatible endpoint is available:
@@ -117,15 +121,34 @@ python scripts/expand_chisco_tokens.py --backend template
 ```bash
 export OPENAI_API_KEY=...
 export OPENAI_BASE_URL=...
-python scripts/expand_chisco_tokens.py \
-  --backend openai-compatible \
-  --model MODEL_NAME \
-  --resume
+export EXPANSION_MODEL=MODEL_NAME
+bash scripts/run_chisco_text_pipeline.sh openai-compatible
 ```
 
 - Status:
-  - Script added locally.
-  - Full execution should be run on the server after `build_chisco_text_assets_inputs.py` has generated `token_explanations.json` and `segmentation.json`.
+  - Token expansion script Chinese prompt/template was repaired after a local mojibake check.
+  - Full paper-like text-side run should be rerun on the server so `word_embeddings.pt` is generated from expanded token explanations.
+
+### Chisco Basic Text Embedding Run
+
+- Command run on server:
+  - `python labels/gen_embedding.py --config configs/text_embedding.chisco.json`
+- Data used:
+  - `sentences.csv`
+  - `token_explanations.json` or the then-current `tokens_file` in `configs/text_embedding.chisco.json`
+  - Local Qwen3 model under `models/Qwen3-Embedding-8B`
+- Method:
+  - Qwen3-Embedding-8B text encoding.
+  - Mean pooling over the final hidden states.
+  - Truncate vectors to 256 dimensions.
+  - L2 normalize embeddings.
+- Result:
+  - `sentence_embeddings.pt`: `6567 x 256`
+  - `word_embeddings.pt`: `5869 x 256`
+- Output:
+  - `/home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/real_data/Chisco/text_assets`
+- Note:
+  - For the paper-like reproduction, rerun the text pipeline after generating `token_explanations.expanded.json`, then rebuild the token bank.
 
 Recommended first training check:
 

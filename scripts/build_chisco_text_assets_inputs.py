@@ -5,8 +5,6 @@ import os
 from collections import Counter, OrderedDict
 from pathlib import Path
 
-import torch
-
 
 DEFAULT_EEG_ROOT = Path(
     os.environ.get(
@@ -15,8 +13,15 @@ DEFAULT_EEG_ROOT = Path(
     )
 )
 
+DEFAULT_MODEL_PATH = os.environ.get(
+    "CHISCO_EMBEDDING_MODEL",
+    "/home/share/huadjyin/home/sunmengmeng/work/EEG/BrainMosaic_ICLR26/models/Qwen3-Embedding-8B",
+)
+
 
 def load_records(path):
+    import torch
+
     data = torch.load(path, map_location="cpu")
     if isinstance(data, dict) and "samples" in data:
         data = data["samples"]
@@ -120,7 +125,8 @@ def write_json(path, data):
         json.dump(data, f, ensure_ascii=False, indent=2)
 
 
-def build_text_embedding_config(text_root, model_name, device, batch_size, truncate_dim):
+def build_text_embedding_config(text_root, model_name, device, batch_size, truncate_dim, use_expanded_tokens):
+    tokens_file = text_root / ("token_explanations.expanded.json" if use_expanded_tokens else "token_explanations.json")
     return {
         "model": {
             "name_or_path": model_name,
@@ -134,7 +140,7 @@ def build_text_embedding_config(text_root, model_name, device, batch_size, trunc
         "inputs": {
             "sentences_file": str(text_root / "sentences.csv"),
             "sentence_col": "sentence",
-            "tokens_file": str(text_root / "token_explanations.json"),
+            "tokens_file": str(tokens_file),
             "token_key_col": "key",
             "token_explanation_col": "explanation",
             "use_expansion_text": True,
@@ -238,11 +244,16 @@ def parse_args():
     parser.add_argument("--text-root", type=Path, default=None)
     parser.add_argument("--config-dir", type=Path, default=Path("configs"))
     parser.add_argument("--output-dir", type=Path, default=Path("outputs/chisco"))
-    parser.add_argument("--model-name", default="Qwen/Qwen3-Embedding-8B")
+    parser.add_argument("--model-name", default=DEFAULT_MODEL_PATH)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--batch-size", type=int, default=32)
     parser.add_argument("--truncate-dim", type=int, default=256)
     parser.add_argument("--cluster-sim-threshold", type=float, default=0.78)
+    parser.add_argument(
+        "--raw-token-config",
+        action="store_true",
+        help="Point text_embedding.chisco.json at token_explanations.json instead of token_explanations.expanded.json.",
+    )
     return parser.parse_args()
 
 
@@ -267,6 +278,7 @@ def main():
             device=args.device,
             batch_size=args.batch_size,
             truncate_dim=args.truncate_dim,
+            use_expanded_tokens=not args.raw_token_config,
         ),
     )
     write_json(
@@ -294,7 +306,14 @@ def main():
     print(f"  unique tokens: {len(token_counts)}")
     print(f"  text root: {text_root}")
     print(f"  config dir: {args.config_dir.resolve()}")
+    print(f"  embedding model: {args.model_name}")
+    print(
+        "  token embedding source: "
+        + ("token_explanations.expanded.json" if not args.raw_token_config else "token_explanations.json")
+    )
     print("\nNext commands:")
+    if not args.raw_token_config:
+        print("  python scripts/expand_chisco_tokens.py --backend template --resume")
     print("  python labels/gen_embedding.py --config configs/text_embedding.chisco.json")
     print("  python labels/emb_preprocessing.py --config configs/token_bank.chisco.json")
     print("  python main.py --config configs/train.chisco.json")
