@@ -6,6 +6,29 @@ from typing import List
 import pandas as pd
 import torch
 import torch.nn.functional as F
+
+
+def install_torch_compiler_shim():
+    """Provide the small torch.compiler API surface used by newer Transformers."""
+    if hasattr(torch, "compiler"):
+        return
+
+    class _CompilerShim:
+        @staticmethod
+        def disable(fn=None, recursive=True):
+            if fn is None:
+                return lambda wrapped: wrapped
+            return fn
+
+        @staticmethod
+        def is_compiling():
+            return False
+
+    torch.compiler = _CompilerShim()
+
+
+install_torch_compiler_shim()
+
 from transformers import AutoModel, AutoTokenizer
 
 

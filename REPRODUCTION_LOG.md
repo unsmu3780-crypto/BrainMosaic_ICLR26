@@ -150,3 +150,20 @@ Recommended first training check:
   - `scripts/expand_chisco_tokens.py`
   - `scratch/inspect_logs/*`
   - `smoke_brainmosaic.sh`
+
+### Environment Compatibility: Qwen3 on ARM Torch 2.0
+
+- Context:
+  - The remote server is `aarch64`/ARM64, while the initially downloaded PyTorch wheels were `linux_x86_64` and cannot be installed there.
+  - The current server environment has `torch 2.0.0+cu118`, which can use CUDA 11.8 but does not expose `torch.compiler`.
+  - The upgraded `transformers` version needed by Qwen3 imports model code that expects `torch.compiler`.
+- Code changed:
+  - `labels/gen_embedding.py`
+- Method:
+  - Add a minimal `torch.compiler` shim before importing `transformers`.
+  - The shim only provides `disable()` and `is_compiling()`, enough for model import paths that check the API.
+  - Tensor computation, CUDA execution, model loading, mean pooling, 256-d truncation, and L2 normalization are unchanged.
+- Expected effect:
+  - Allow `python labels/gen_embedding.py --config configs/text_embedding.chisco.json` to proceed on the current ARM server environment without upgrading PyTorch.
+- Validation:
+  - Local syntax check passed with `python -m py_compile labels/gen_embedding.py`.
