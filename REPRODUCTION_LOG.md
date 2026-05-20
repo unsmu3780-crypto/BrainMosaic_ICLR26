@@ -164,6 +164,7 @@ Recommended first training check:
   - The shim only provides `disable()` and `is_compiling()`, enough for model import paths that check the API.
   - Add missing float8 dtype names expected by newer `transformers` import-time dtype tables, mapped to `torch.uint8` only to allow import on `torch 2.0.0`.
   - Patch `torch.nn.Module.load_state_dict` to ignore the newer `assign` keyword when running on `torch 2.0.0`.
+  - Load Qwen3 with `low_cpu_mem_usage=False` to avoid the meta-tensor loading path that requires `assign=True`.
   - Tensor computation, CUDA execution, model loading, mean pooling, 256-d truncation, and L2 normalization are unchanged.
 - Expected effect:
   - Allow `python labels/gen_embedding.py --config configs/text_embedding.chisco.json` to proceed on the current ARM server environment without upgrading PyTorch.

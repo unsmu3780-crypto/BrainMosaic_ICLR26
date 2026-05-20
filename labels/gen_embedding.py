@@ -125,7 +125,11 @@ def main():
     truncate_dim = int(cfg["runtime"].get("truncate_dim", 256))
 
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
-    model = AutoModel.from_pretrained(model_name, trust_remote_code=True).eval().to(device)
+    model = AutoModel.from_pretrained(
+        model_name,
+        trust_remote_code=True,
+        low_cpu_mem_usage=False,
+    ).eval().to(device)
 
     sentence_df = read_table(cfg["inputs"]["sentences_file"])
     sentence_col = cfg["inputs"].get("sentence_col", "sentence")
