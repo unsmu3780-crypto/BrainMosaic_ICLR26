@@ -184,6 +184,12 @@ dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
   - `cpu=16;gpu=1;mem=120000`
   - Explicitly activates the `BrainMosaic` conda environment before running the pipeline.
   - Training uses GPU through `device=cuda` from `configs/train.chisco.json`.
+- Scheduler/debug notes:
+  - `#DSUB -oo` / `#DSUB -eo` target directories must exist before submission; otherwise the job can fail before the script body runs.
+  - The DSUB script itself must be executable (`chmod +x scripts/dsub_chisco_threshold_sweep_and_train.sh`).
+  - The pipeline script must also be executable (`chmod +x scripts/run_chisco_threshold_sweep_and_train.sh`).
+  - On this cluster, `conda.sh` is available at `/home/HPCBase/tools/anaconda3/etc/profile.d/conda.sh`, not under `~/.conda/etc/profile.d/`.
+  - The job account should use the project account `root.project.P23Z10200N0876`, not the `_tmp` variant.
 
 - Useful overrides:
 

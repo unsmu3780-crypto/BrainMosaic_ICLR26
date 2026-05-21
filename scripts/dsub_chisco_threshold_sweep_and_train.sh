@@ -17,7 +17,7 @@
 
 #DSUB -n chisco_threshold_sweep
 #DSUB -N 1
-#DSUB -A root.project.P23Z10200N0876_tmp
+#DSUB -A root.project.P23Z10200N0876
 #DSUB -R "cpu=16;gpu=1;mem=120000"
 #DSUB -oo /home/share/huadjyin/home/sunmengmeng/work/EEG/BrainMosaic_ICLR26/log/submit/%J.chisco_threshold_sweep.out
 #DSUB -eo /home/share/huadjyin/home/sunmengmeng/work/EEG/BrainMosaic_ICLR26/log/submit/%J.chisco_threshold_sweep.err
@@ -72,7 +72,7 @@ export PYTHONUNBUFFERED=1
 # Activate the known BrainMosaic conda environment explicitly so logs and child
 # processes show the expected environment.
 
-CONDA_SH="${CONDA_SH:-/home/share/huadjyin/home/sunmengmeng/.conda/etc/profile.d/conda.sh}"
+CONDA_SH="${CONDA_SH:-/home/HPCBase/tools/anaconda3/etc/profile.d/conda.sh}"
 CONDA_ENV="${CONDA_ENV:-BrainMosaic}"
 PYTHON_BIN="${PYTHON_BIN:-/home/share/huadjyin/home/sunmengmeng/.conda/envs/BrainMosaic/bin/python}"
 PIPELINE_SCRIPT="$JOB_PATH/scripts/run_chisco_threshold_sweep_and_train.sh"
