@@ -45,7 +45,28 @@ def install_load_state_dict_assign_shim():
 
     original_load_state_dict = torch.nn.Module.load_state_dict
 
+    def set_tensor_by_name(module, name, tensor):
+        parts = name.split(".")
+        target = module
+        for part in parts[:-1]:
+            if part in target._modules:
+                target = target._modules[part]
+            else:
+                target = getattr(target, part)
+
+        leaf = parts[-1]
+        if leaf in target._parameters:
+            old_param = target._parameters[leaf]
+            requires_grad = old_param.requires_grad if old_param is not None else True
+            target._parameters[leaf] = torch.nn.Parameter(tensor.detach(), requires_grad=requires_grad)
+            return
+        if leaf in target._buffers:
+            target._buffers[leaf] = tensor.detach()
+
     def load_state_dict_compat(self, state_dict, strict=True, assign=False):
+        if assign:
+            for name, tensor in state_dict.items():
+                set_tensor_by_name(self, name, tensor)
         return original_load_state_dict(self, state_dict, strict=strict)
 
     torch.nn.Module.load_state_dict = load_state_dict_compat

@@ -94,6 +94,7 @@ After running token expansion, update `configs/text_embedding.chisco.json` so
 
 - Code added:
   - `scripts/expand_chisco_tokens.py`
+  - `scripts/run_chisco_text_pipeline.sh`
 - Motivation:
   - The paper describes expanding semantic units into short explanation phrases before embedding to reduce ambiguity and improve generalization.
   - The first Chisco input builder used the raw token itself as its explanation. That is enough to run the public pipeline, but less close to the paper.
@@ -104,12 +105,15 @@ After running token expansion, update `configs/text_embedding.chisco.json` so
   - Two backends are supported:
     - `template`: offline deterministic context phrase, no external model call.
     - `openai-compatible`: call a chat model through an OpenAI-compatible API, with template fallback on API/network errors.
+  - The Chisco config builder now points `configs/text_embedding.chisco.json` to `token_explanations.expanded.json` by default, so regenerated configs follow the paper-like token-expansion path.
+  - The Chisco config builder now defaults `model.name_or_path` to the local server model path:
+    `/home/share/huadjyin/home/sunmengmeng/work/EEG/BrainMosaic_ICLR26/models/Qwen3-Embedding-8B`.
 - Expected output:
   - `/home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/real_data/Chisco/text_assets/token_explanations.expanded.json`
 - Recommended first run:
 
 ```bash
-python scripts/expand_chisco_tokens.py --backend template
+bash scripts/run_chisco_text_pipeline.sh template
 ```
 
 - Optional LLM run, if an OpenAI-compatible endpoint is available:
@@ -117,15 +121,94 @@ python scripts/expand_chisco_tokens.py --backend template
 ```bash
 export OPENAI_API_KEY=...
 export OPENAI_BASE_URL=...
-python scripts/expand_chisco_tokens.py \
-  --backend openai-compatible \
-  --model MODEL_NAME \
-  --resume
+export EXPANSION_MODEL=MODEL_NAME
+bash scripts/run_chisco_text_pipeline.sh openai-compatible
 ```
 
 - Status:
-  - Script added locally.
-  - Full execution should be run on the server after `build_chisco_text_assets_inputs.py` has generated `token_explanations.json` and `segmentation.json`.
+  - Token expansion script Chinese prompt/template was repaired after a local mojibake check.
+  - Full paper-like text-side run should be rerun on the server so `word_embeddings.pt` is generated from expanded token explanations.
+
+### Chisco Basic Text Embedding Run
+
+- Command run on server:
+  - `python labels/gen_embedding.py --config configs/text_embedding.chisco.json`
+- Data used:
+  - `sentences.csv`
+  - `token_explanations.json` or the then-current `tokens_file` in `configs/text_embedding.chisco.json`
+  - Local Qwen3 model under `models/Qwen3-Embedding-8B`
+- Method:
+  - Qwen3-Embedding-8B text encoding.
+  - Mean pooling over the final hidden states.
+  - Truncate vectors to 256 dimensions.
+  - L2 normalize embeddings.
+- Result:
+  - `sentence_embeddings.pt`: `6567 x 256`
+  - `word_embeddings.pt`: `5869 x 256`
+- Output:
+  - `/home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/real_data/Chisco/text_assets`
+- Note:
+  - For the paper-like reproduction, rerun the text pipeline after generating `token_explanations.expanded.json`, then rebuild the token bank.
+
+### Added: Chisco Token-Bank Threshold Sweep and Training Job
+
+- Code added:
+  - `scripts/run_chisco_threshold_sweep_and_train.sh`
+  - `scripts/dsub_chisco_threshold_sweep_and_train.sh`
+- Motivation:
+  - The public repository provides `cluster_sim_threshold=0.78` in `configs/token_bank.example.json` and uses `0.78` as the code default, but no stronger paper-level fixed threshold was found in the public docs.
+  - The first Chisco token bank produced `187` clusters from `5869` expanded token embeddings, so threshold sensitivity should be checked before long training.
+- Method:
+  - Sweep token-bank thresholds with default values: `0.78 0.85 0.90 0.95`.
+  - For each threshold:
+    - Write a threshold-specific token-bank config under `configs/token_bank.chisco.t*.json`.
+    - Build a threshold-specific token bank under `text_assets/token_bank_t*/`.
+    - Write a threshold-specific smoke training config under `configs/train.chisco.smoke.t*.json`.
+    - Run short training/validation, default `5` epochs with batch size `8`.
+    - Save summary JSON/TSV under `outputs/chisco_threshold_sweep/`.
+  - If `RUN_FULL=1`, run full training for the `0.78` public-code baseline and the best smoke result selected by matching accuracy and mean cosine.
+  - If the best smoke threshold is also `0.78`, run full training only once to avoid duplicate work.
+- Recommended server command:
+
+```bash
+bash scripts/run_chisco_threshold_sweep_and_train.sh
+```
+
+- Recommended DSUB submission:
+
+```bash
+dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
+```
+
+- DSUB default resources:
+  - `cpu=16;gpu=1;mem=120000`
+  - Explicitly activates the `BrainMosaic` conda environment before running the pipeline.
+  - Training uses GPU through `device=cuda` from `configs/train.chisco.json`.
+- Scheduler/debug notes:
+  - `#DSUB -oo` / `#DSUB -eo` target directories must exist before submission; otherwise the job can fail before the script body runs.
+  - The DSUB script itself must be executable (`chmod +x scripts/dsub_chisco_threshold_sweep_and_train.sh`).
+  - The pipeline script must also be executable (`chmod +x scripts/run_chisco_threshold_sweep_and_train.sh`).
+  - On this cluster, `conda.sh` is available at `/home/HPCBase/tools/anaconda3/etc/profile.d/conda.sh`, not under `~/.conda/etc/profile.d/`.
+  - The job account should use the project account `root.project.P23Z10200N0876`, not the `_tmp` variant.
+
+- Useful overrides:
+
+```bash
+RUN_FULL=0 bash scripts/run_chisco_threshold_sweep_and_train.sh
+THRESHOLDS="0.78 0.85 0.90 0.95" SMOKE_EPOCHS=1 RUN_FULL=0 bash scripts/run_chisco_threshold_sweep_and_train.sh
+BEST_THRESHOLD=0.90 FULL_EPOCHS=50 FULL_BATCH_SIZE=32 bash scripts/run_chisco_threshold_sweep_and_train.sh
+RUN_FULL=0 dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
+BEST_THRESHOLD=0.90 FULL_EPOCHS=50 FULL_BATCH_SIZE=32 dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
+FULL_MODE=best_only dsub -s scripts/dsub_chisco_threshold_sweep_and_train.sh
+```
+
+- Expected outputs:
+  - `outputs/chisco_threshold_sweep/sweep_summary.json`
+  - `outputs/chisco_threshold_sweep/sweep_summary.tsv`
+  - `outputs/chisco_threshold_sweep/t*.summary.json`
+  - `outputs/chisco_full/t*/epoch_history.json`
+  - `outputs/chisco_full/t*/best_summary.json`
+  - `outputs/chisco_full/selected_full_configs.txt`
 
 Recommended first training check:
 
@@ -163,7 +246,7 @@ Recommended first training check:
   - Add a minimal `torch.compiler` shim before importing `transformers`.
   - The shim only provides `disable()` and `is_compiling()`, enough for model import paths that check the API.
   - Add missing float8 dtype names expected by newer `transformers` import-time dtype tables, mapped to `torch.uint8` only to allow import on `torch 2.0.0`.
-  - Patch `torch.nn.Module.load_state_dict` to ignore the newer `assign` keyword when running on `torch 2.0.0`.
+  - Patch `torch.nn.Module.load_state_dict` to emulate the newer `assign` keyword when running on `torch 2.0.0`, replacing meta parameters with checkpoint tensors before the normal strictness checks.
   - Load Qwen3 with `low_cpu_mem_usage=False` to avoid the meta-tensor loading path that requires `assign=True`.
   - Tensor computation, CUDA execution, model loading, mean pooling, 256-d truncation, and L2 normalization are unchanged.
 - Expected effect:

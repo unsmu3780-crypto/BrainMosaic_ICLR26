@@ -16,10 +16,9 @@ DEFAULT_TEXT_ROOT = Path(
 )
 
 DEFAULT_SYSTEM_PROMPT = (
-    "You are building semantic-unit explanations for an EEG semantic intent decoding dataset. "
-    "For each Chinese token, write one concise Chinese explanation phrase that preserves its "
-    "meaning in the given sentence contexts. Do not add unrelated information. "
-    "Return only the explanation phrase."
+    "你正在为 EEG 语义意图解码数据集构建语义单元解释。"
+    "对于每个中文 token，请结合给定句子语境，写一个简洁的中文解释短语，"
+    "保留该 token 在语境中的语义，不要加入无关信息。只返回解释短语。"
 )
 
 
@@ -52,12 +51,12 @@ def collect_contexts(segmentation, max_contexts):
 def template_expand(token, contexts):
     if contexts:
         joined = "；".join(contexts[:2])
-        return f"在句子语境中表示“{token}”的语义单元，例句：{joined}"
+        return f"在句子语境中表示“{token}”的语义单元，例如：{joined}"
     return f"表示“{token}”的中文语义单元"
 
 
 def make_user_prompt(token, contexts):
-    context_lines = "\n".join(f"- {s}" for s in contexts[:5]) or "- 无"
+    context_lines = "\n".join(f"- {s}" for s in contexts[:5]) or "- 无可用句子语境"
     return (
         f"中文 token：{token}\n"
         f"出现语境：\n{context_lines}\n\n"
