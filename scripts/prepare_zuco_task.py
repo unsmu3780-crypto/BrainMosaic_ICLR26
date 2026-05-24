@@ -70,6 +70,10 @@ EN_CLOSED_CLASS = {
     "AUX", "CCONJ", "ADP", "CC", "IN", "TO", "DT", "PDT", "WDT", "PRP", "PRP$", "WP", "WP$", "MD",
 }
 
+TOKEN_FIXES = {
+    "emp11111ty": "empty",
+}
+
 
 def parse_args():
     parser = argparse.ArgumentParser("Prepare a single ZuCo task into unified BrainMosaic splits")
@@ -84,6 +88,33 @@ def parse_args():
 
 def normalize_text(text):
     return re.sub(r"\s+", " ", str(text).strip()).replace("\uFFFD", "'")
+
+
+def normalize_token(token):
+    token = normalize_text(token)
+    token = token.replace("`", "'")
+    token = re.sub(r"[“”]", '"', token)
+    token = re.sub(r"[‘’]", "'", token)
+    token = token.strip("()[]{}\"'")
+    token = re.sub(r"^[^\w]+|[^\w]+$", "", token)
+    token = TOKEN_FIXES.get(token, token)
+    token = re.sub(r"([A-Za-z])\d{2,}([A-Za-z])", r"\1\2", token)
+    token = re.sub(r"\d{4,}", "", token) if not re.search(r"[A-Za-z]", token) else token
+    return token.strip()
+
+
+def is_noise_token(token):
+    if not token:
+        return True
+    if re.fullmatch(r"[\W_]+", token):
+        return True
+    if not re.search(r"[A-Za-z0-9]", token):
+        return True
+    if re.fullmatch(r"[A-Za-z]?", token):
+        return True
+    if re.search(r"\d{5,}", token):
+        return True
+    return False
 
 
 def load_semicolon_csv(path):
@@ -129,28 +160,43 @@ def maybe_pos_tag(words):
 
 def select_words(word_entries):
     raw_words = []
+    token_stats = Counter()
     for item in word_entries or []:
         if isinstance(item, dict):
             token = normalize_text(item.get("content", ""))
         else:
             token = normalize_text(item)
         if not token:
+            token_stats["empty_raw"] += 1
             continue
-        if re.fullmatch(r"[\W_]+", token):
+        token = normalize_token(token)
+        if is_noise_token(token):
+            token_stats["noise_filtered"] += 1
             continue
         raw_words.append(token)
 
     if not raw_words:
-        return [], {"mode": "empty"}
+        return [], {"mode": "empty", "stats": dict(token_stats)}
 
     tagged = maybe_pos_tag(raw_words)
     if tagged:
         kept = [w for w, tag in tagged if tag not in EN_CLOSED_CLASS and w.lower() not in EN_STOPWORDS]
         if kept:
-            return kept[:8], {"mode": "nltk_pos", "num_input": len(raw_words), "num_kept": len(kept)}
+            token_stats["closed_class_filtered"] = len(raw_words) - len(kept)
+            return kept[:8], {"mode": "nltk_pos", "num_input": len(raw_words), "num_kept": len(kept), "stats": dict(token_stats)}
 
     kept = [w for w in raw_words if w.lower() not in EN_STOPWORDS and re.search(r"[A-Za-z0-9]", w)]
-    return kept[:8], {"mode": "fallback_stopwords", "num_input": len(raw_words), "num_kept": len(kept)}
+    token_stats["stopword_filtered"] = len(raw_words) - len(kept)
+    deduped = []
+    seen = set()
+    for w in kept:
+        key = w.lower()
+        if key in seen:
+            token_stats["dedup_filtered"] += 1
+            continue
+        seen.add(key)
+        deduped.append(w)
+    return deduped[:8], {"mode": "fallback_stopwords", "num_input": len(raw_words), "num_kept": len(deduped), "stats": dict(token_stats)}
 
 
 def stable_split_indices(length, val_ratio, seed, subject, task):
