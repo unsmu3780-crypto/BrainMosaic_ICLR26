@@ -268,11 +268,11 @@ def collate_fn(batch):
 
     Returns:
         Tuple of:
-        - batched_inputs: Tensor [B, C, T]
+        - batched_inputs: NestedTensor with padded Tensor [B, C, T] and mask [B, T]
         - batched_targets: List[Dict] with "embeddings" of shape [num_labels, d_model] for each item
     """
     inputs, targets = zip(*batch)
-    batched_inputs = torch.stack(inputs)                   
+    batched_inputs = nested_tensor_from_tensor_list(list(inputs))
     return batched_inputs, list(targets)
 
 
