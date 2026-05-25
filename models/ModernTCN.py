@@ -409,6 +409,8 @@ class ModernTCNEncoder(nn.Module):
 
     @torch.no_grad()
     def _feature_only(self, x: torch.Tensor) -> torch.Tensor:
+        while hasattr(x, 'tensors'):
+            x = x.tensors
         if x.ndim == 3:
             C_expected = self.backbone.stem.conv.in_channels 
             if x.shape[1] != C_expected and x.shape[2] == C_expected:

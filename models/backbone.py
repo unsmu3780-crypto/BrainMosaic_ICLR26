@@ -1,6 +1,6 @@
 import torch
+import torch.nn as nn
 import torch.nn.functional as F
-import torch
 from torch import Tensor
 from collections import defaultdict, deque
 from packaging import version
@@ -47,7 +47,9 @@ class Joiner(nn.Module):
         self.encoder = encoder
 
     def forward(self, tensor_list: NestedTensor):
-        x = tensor_list.tensors
+        x = tensor_list.tensors if hasattr(tensor_list, "tensors") else tensor_list
+        while hasattr(x, "tensors"):
+            x = x.tensors
         features = self.encoder(x) 
         return features, None
 
