@@ -1,0 +1,25 @@
+{
+  "input": {
+    "run_dir": "outputs/chisco_full/t0p78",
+    "reconstruction_json": "outputs/chisco_full/t0p78/reconstruction/reconstructed_sentences.json",
+    "sentence_embeddings_pt": "/path/to/Chisco/text_assets/sentence_embeddings.pt"
+  },
+  "embedding_model": {
+    "name_or_path": "/path/to/models/Qwen3-Embedding-8B"
+  },
+  "runtime": {
+    "device": "cuda",
+    "batch_size": 32,
+    "max_length": 128,
+    "truncate_dim": 256
+  },
+  "metrics": {
+    "expected_candidates": 5,
+    "bert_score_lang": "zh",
+    "bert_score_model_type": null
+  },
+  "output": {
+    "summary_json": "outputs/chisco_full/t0p78/reconstruction/eval_summary.json",
+    "per_sample_json": "outputs/chisco_full/t0p78/reconstruction/eval_per_sample.json"
+  }
+}
