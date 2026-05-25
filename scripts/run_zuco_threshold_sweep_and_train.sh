@@ -2,7 +2,7 @@
 set -euo pipefail
 
 TASK="${1:?usage: run_zuco_threshold_sweep_and_train.sh ZuCoSR|ZuCoNR|ZuCoTSR}"
-TAG="$(echo "${TASK}" | tr '[:upper:]' '[:lower:]')"
+DATASET_TAG="$(echo "${TASK}" | tr '[:upper:]' '[:lower:]')"
 
 THRESHOLDS="${THRESHOLDS:-0.78 0.85 0.90 0.95}"
 SMOKE_EPOCHS="${SMOKE_EPOCHS:-1}"
@@ -14,20 +14,20 @@ FULL_NUM_WORKERS="${FULL_NUM_WORKERS:-4}"
 RUN_FULL="${RUN_FULL:-1}"
 FULL_MODE="${FULL_MODE:-baseline_and_best}"
 BASELINE_THRESHOLD="${BASELINE_THRESHOLD:-0.78}"
-BASE_TRAIN_CONFIG="${BASE_TRAIN_CONFIG:-configs/train.${TAG}.json}"
-BASE_TOKEN_CONFIG="${BASE_TOKEN_CONFIG:-configs/token_bank.${TAG}.json}"
-SWEEP_ROOT="${SWEEP_ROOT:-outputs/${TAG}_threshold_sweep}"
-FULL_ROOT="${FULL_ROOT:-outputs/${TAG}_full}"
+BASE_TRAIN_CONFIG="${BASE_TRAIN_CONFIG:-configs/train.${DATASET_TAG}.json}"
+BASE_TOKEN_CONFIG="${BASE_TOKEN_CONFIG:-configs/token_bank.${DATASET_TAG}.json}"
+SWEEP_ROOT="${SWEEP_ROOT:-outputs/${DATASET_TAG}_threshold_sweep}"
+FULL_ROOT="${FULL_ROOT:-outputs/${DATASET_TAG}_full}"
 
 mkdir -p "${SWEEP_ROOT}" "${FULL_ROOT}"
 
 for threshold in ${THRESHOLDS}; do
   tag="t${threshold//./p}"
-  token_cfg="configs/token_bank.${TAG}.${tag}.json"
-  train_cfg="configs/train.${TAG}.smoke.${tag}.json"
+  token_cfg="configs/token_bank.${DATASET_TAG}.${tag}.json"
+  train_cfg="configs/train.${DATASET_TAG}.smoke.${tag}.json"
   log_file="${SWEEP_ROOT}/${tag}.log"
 
-  THRESHOLD="${threshold}" TAG="${tag}" DATASET_TAG="${TAG}" BASE_TOKEN_CONFIG="${BASE_TOKEN_CONFIG}" python - <<'PY'
+  THRESHOLD="${threshold}" TAG="${tag}" DATASET_TAG="${DATASET_TAG}" BASE_TOKEN_CONFIG="${BASE_TOKEN_CONFIG}" python - <<'PY'
 import json
 import os
 from pathlib import Path
@@ -47,7 +47,7 @@ PY
 
   python labels/emb_preprocessing.py --config "${token_cfg}"
 
-  THRESHOLD="${threshold}" TAG="${tag}" DATASET_TAG="${TAG}" BASE_TRAIN_CONFIG="${BASE_TRAIN_CONFIG}" \
+  THRESHOLD="${threshold}" TAG="${tag}" DATASET_TAG="${DATASET_TAG}" BASE_TRAIN_CONFIG="${BASE_TRAIN_CONFIG}" \
   SMOKE_EPOCHS="${SMOKE_EPOCHS}" SMOKE_BATCH_SIZE="${SMOKE_BATCH_SIZE}" \
   SMOKE_NUM_WORKERS="${SMOKE_NUM_WORKERS}" SWEEP_ROOT="${SWEEP_ROOT}" python - <<'PY'
 import json
@@ -76,7 +76,7 @@ PY
 
   python main.py --config "${train_cfg}" 2>&1 | tee "${log_file}"
 
-  THRESHOLD="${threshold}" TAG="${tag}" DATASET_TAG="${TAG}" SWEEP_ROOT="${SWEEP_ROOT}" python - <<'PY'
+  THRESHOLD="${threshold}" TAG="${tag}" DATASET_TAG="${DATASET_TAG}" SWEEP_ROOT="${SWEEP_ROOT}" python - <<'PY'
 import json
 import os
 from pathlib import Path
@@ -127,7 +127,7 @@ fi
 
 FULL_MODE="${FULL_MODE}" BASELINE_THRESHOLD="${BASELINE_THRESHOLD}" SWEEP_ROOT="${SWEEP_ROOT}" \
 BASE_TRAIN_CONFIG="${BASE_TRAIN_CONFIG}" FULL_ROOT="${FULL_ROOT}" FULL_BATCH_SIZE="${FULL_BATCH_SIZE}" \
-FULL_NUM_WORKERS="${FULL_NUM_WORKERS}" FULL_EPOCHS="${FULL_EPOCHS}" DATASET_TAG="${TAG}" python - <<'PY'
+FULL_NUM_WORKERS="${FULL_NUM_WORKERS}" FULL_EPOCHS="${FULL_EPOCHS}" DATASET_TAG="${DATASET_TAG}" python - <<'PY'
 import json
 import os
 from pathlib import Path
