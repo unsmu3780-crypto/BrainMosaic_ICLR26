@@ -218,7 +218,7 @@ class Stage(nn.Module):
     def __init__(self, ffn_ratio, num_blocks, large_size, small_size, dmodel, nvars,
                  small_kernel_merged=False, drop=0.1):
         super(Stage, self).__init__()
-        d_ffn = dmodel * ffn_ratio
+        d_ffn = int(dmodel * ffn_ratio)
         self.blocks = nn.ModuleList([
             Block(large_size, small_size, dmodel, d_ffn, nvars, small_kernel_merged, drop)
             for _ in range(num_blocks)
