@@ -275,13 +275,55 @@ def load_materials(materials_root: Path) -> dict[str, dict[int, str]]:
             if chapters:
                 materials[session] = chapters
                 break
-    missing = [session for session in SESSION_RUN_LAYOUT if not materials.get(session)]
-    if missing:
-        raise FileNotFoundError(
-            f"Could not resolve chapter text materials for sessions: {', '.join(missing)} "
-            f"under {materials_root}"
-        )
     return materials
+
+
+def extract_sentences_from_events(events_df: pd.DataFrame) -> list[str]:
+    candidates = [
+        "sentence",
+        "text",
+        "content",
+        "stimulus",
+        "stim_text",
+        "trial_text",
+        "value",
+        "annotation",
+        "trial_type",
+    ]
+    columns = {str(col).strip().lower(): col for col in events_df.columns}
+
+    for key in candidates:
+        if key not in columns:
+            continue
+        series = events_df[columns[key]]
+        values = []
+        seen = set()
+        for value in series:
+            if pd.isna(value):
+                continue
+            text = normalize_text(value)
+            if not text or text.lower() == "nan":
+                continue
+            if text in seen:
+                continue
+            seen.add(text)
+            values.append(text)
+        if not values:
+            continue
+
+        # If the column stores one long chapter string, split it into sentences.
+        if len(values) == 1:
+            return split_sentences(values[0])
+
+        # If rows already look sentence-like, keep them as units.
+        if sum(len(split_sentences(text)) for text in values[:10]) <= len(values[:10]) * 2:
+            return values
+
+        joined = " ".join(values)
+        split_joined = split_sentences(joined)
+        if split_joined:
+            return split_joined
+    return []
 
 
 def read_events_from_zip(zf: zipfile.ZipFile, name: str) -> pd.DataFrame:
@@ -424,7 +466,7 @@ def main():
     materials_root = args.materials_root.resolve()
     out_root.mkdir(parents=True, exist_ok=True)
 
-    materials = load_materials(materials_root)
+    materials = load_materials(materials_root) if materials_root.exists() else {}
     records = []
     skipped = []
     stats = Counter()
@@ -452,14 +494,14 @@ def main():
                         continue
 
                     chapter_index = chapter_from_run(session, run_number)
-                    chapter_text = materials.get(session, {}).get(chapter_index)
-                    if chapter_index is None or not chapter_text:
-                        skipped.append((zip_path.name, asset_key, f"missing_chapter_text:{session}:{run_number}"))
-                        continue
-
-                    sentences = split_sentences(chapter_text)
+                    chapter_text = materials.get(session, {}).get(chapter_index) if chapter_index is not None else None
+                    sentences = split_sentences(chapter_text) if chapter_text else []
                     if not sentences:
-                        skipped.append((zip_path.name, asset_key, "empty_sentence_split"))
+                        sentences = extract_sentences_from_events(events_df)
+                    if not sentences:
+                        skipped.append(
+                            (zip_path.name, asset_key, f"missing_sentence_source:{session}:{run_number}")
+                        )
                         continue
 
                     events_df = read_events_from_zip(zf, asset_group["events"])
@@ -490,6 +532,7 @@ def main():
                                 "window_start_sec": sent_start,
                                 "window_end_sec": sent_end,
                                 "timing_mode": "chapter_duration_proportional",
+                                "text_source": "materials" if chapter_text else "events_tsv",
                                 "target_sfreq": args.target_sfreq,
                             }
                             record = build_record(raw, sentence, sent_start, sent_end, meta, args.save_dtype)
