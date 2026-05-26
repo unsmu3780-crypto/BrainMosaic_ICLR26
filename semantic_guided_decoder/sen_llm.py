@@ -1,5 +1,6 @@
 import argparse
 import json
+import time
 from pathlib import Path
 
 import httpx
@@ -10,11 +11,26 @@ def load_json(path):
         return json.load(f)
 
 
-def save_json(obj, path):
+def save_json(obj, path, indent=2):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as f:
-        json.dump(obj, f, ensure_ascii=False, indent=2)
+        json.dump(obj, f, ensure_ascii=False, indent=indent)
+
+
+def load_existing_samples(path):
+    path = Path(path)
+    if not path.exists():
+        return [], {}
+
+    data = load_json(path)
+    samples = data.get("samples", []) if isinstance(data, dict) else []
+    index = {}
+    for item in samples:
+        sample_index = item.get("sample_index")
+        if sample_index is not None:
+            index[sample_index] = item
+    return samples, index
 
 
 def _head_hint_text(head_name, probs, cfg, language):
@@ -116,6 +132,8 @@ def call_llm(prompt, cfg):
     model = cfg["llm"]["model"]
     api_key = cfg["llm"]["api_key"]
     timeout_sec = cfg["llm"].get("timeout_sec", 60)
+    max_retries = int(cfg["llm"].get("max_retries", 3))
+    retry_backoff_sec = float(cfg["llm"].get("retry_backoff_sec", 2.0))
 
     headers = {"Authorization": f"Bearer {api_key}"}
     payload = {
@@ -125,34 +143,80 @@ def call_llm(prompt, cfg):
         "max_tokens": cfg["generation"].get("max_tokens", 200),
     }
 
-    with httpx.Client(timeout=timeout_sec) as client:
-        res = client.post(endpoint, headers=headers, json=payload)
-        res.raise_for_status()
-        data = res.json()
-    content = data["choices"][0]["message"]["content"]
-    lines = [ln.strip() for ln in content.split("\n") if ln.strip()]
-    return lines[: cfg["generation"]["num_candidates"]]
+    last_err = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            with httpx.Client(timeout=timeout_sec) as client:
+                res = client.post(endpoint, headers=headers, json=payload)
+                res.raise_for_status()
+                data = res.json()
+            content = data["choices"][0]["message"]["content"]
+            lines = [ln.strip() for ln in content.split("\n") if ln.strip()]
+            return lines[: cfg["generation"]["num_candidates"]]
+        except Exception as err:
+            last_err = err
+            if attempt >= max_retries:
+                break
+            time.sleep(retry_backoff_sec * attempt)
+    raise last_err
 
 
 def reconstruct(config_path):
     cfg = load_json(config_path)
     topk_items = load_json(cfg["input"]["topk_json"])
-    out = []
+    out_path = Path(cfg["output"]["reconstruction_json"])
+    partial_path = Path(cfg["output"].get("partial_json", str(out_path) + ".partial"))
+    resume = bool(cfg["output"].get("resume", True))
+    flush_every = int(cfg["output"].get("flush_every", 20))
+    include_prompt = bool(cfg["output"].get("include_prompt", False))
 
-    for item in topk_items:
+    existing_samples = []
+    existing_index = {}
+    if resume:
+        existing_samples, existing_index = load_existing_samples(out_path)
+        if not existing_samples and partial_path.exists():
+            existing_samples, existing_index = load_existing_samples(partial_path)
+
+    out = list(existing_samples)
+    samples_since_flush = 0
+
+    for row_idx, item in enumerate(topk_items):
+        sample_index = item.get("sample_index", row_idx)
+        if resume and sample_index in existing_index:
+            print(f"[resume] skip sample_index={sample_index}")
+            continue
+
         prompt = build_prompt(item, cfg)
-        cands = call_llm(prompt, cfg)
-        out.append(
-            {
-                "sample_index": item.get("sample_index"),
-                "gold_sentence": item.get("gold_sentence", ""),
-                "prompt": prompt,
-                "candidates": cands,
-            }
-        )
+        record = {
+            "sample_index": sample_index,
+            "gold_sentence": item.get("gold_sentence", ""),
+        }
+        if include_prompt:
+            record["prompt"] = prompt
 
-    save_json({"samples": out}, cfg["output"]["reconstruction_json"])
-    print(f"Saved: {cfg['output']['reconstruction_json']}")
+        try:
+            cands = call_llm(prompt, cfg)
+            record["candidates"] = cands
+            record["status"] = "ok"
+            print(f"[ok] sample_index={sample_index} candidates={len(cands)}")
+        except Exception as err:
+            record["candidates"] = []
+            record["status"] = "error"
+            record["error"] = f"{type(err).__name__}: {err}"
+            print(f"[error] sample_index={sample_index} {record['error']}")
+
+        out.append(record)
+        existing_index[sample_index] = record
+        samples_since_flush += 1
+
+        if samples_since_flush >= flush_every:
+            save_json({"samples": out}, partial_path, indent=None)
+            samples_since_flush = 0
+
+    save_json({"samples": out}, out_path)
+    save_json({"samples": out}, partial_path, indent=None)
+    print(f"Saved: {out_path}")
+    print(f"Partial/Resume file: {partial_path}")
 
 
 def main():

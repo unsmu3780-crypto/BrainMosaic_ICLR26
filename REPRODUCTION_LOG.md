@@ -253,3 +253,126 @@ Recommended first training check:
   - Allow `python labels/gen_embedding.py --config configs/text_embedding.chisco.json` to proceed on the current ARM server environment without upgrading PyTorch.
 - Validation:
   - Local syntax check passed with `python -m py_compile labels/gen_embedding.py`.
+
+## 2026-05-25
+
+### Added: Reconstruction Evaluation Script
+
+- Code added:
+  - `scripts/evaluate_reconstruction.py`
+  - `configs/evaluate_reconstruction.example.json`
+- Purpose:
+  - Evaluate BrainMosaic reconstruction outputs with paper-style aggregate metrics.
+  - Read `best_summary.json` and `epoch_history.json` to recover concept-level metrics.
+  - Read `reconstructed_sentences.json` to compute sentence-level metrics.
+- Metrics reported:
+  - `UMA` from `best_acc`
+  - `MUS` from `mean_cosine` at `best_epoch`
+  - `SRS` from sentence embedding cosine similarity over reconstructed candidates
+  - `BERT-F1` from BERTScore averaged across reconstructed candidates
+- Status:
+  - Script is present in the repo and passed local `py_compile`.
+  - Server-side execution still depends on valid reconstruction outputs and model access.
+
+### Chisco Status Update
+
+- Findings:
+  - The current server working tree initially did not contain `configs/text_embedding.chisco.json`, `configs/token_bank.chisco.json`, or `configs/train.chisco.json`.
+  - The current server working tree also did not contain `outputs/chisco_full/t0p78/...` results needed for reconstruction.
+  - Historical figures/screenshots indicate Chisco had been run before, but the required JSON outputs were not present in the current repo-local `outputs/` tree.
+- Commands run on server:
+  - `python scripts/build_chisco_text_assets_inputs.py`
+  - `python scripts/expand_chisco_tokens.py --backend template --resume`
+- Confirmed outputs:
+  - Recreated Chisco config files under `configs/`
+  - Recreated/confirmed text-side inputs under:
+    `/home/share/huadjyin/home/tangwangyang/workspace/sunmengmeng/data/DIGnet/real_data/Chisco/text_assets`
+  - Regenerated:
+    `token_explanations.expanded.json`
+- Current known Chisco dataset summary:
+  - Train records: `25924`
+  - Validation records: `6481`
+  - Unique sentences: `6567`
+  - Unique tokens: `5869`
+- Next required commands:
+  - `python labels/gen_embedding.py --config configs/text_embedding.chisco.json`
+  - `python labels/emb_preprocessing.py --config configs/token_bank.chisco.json`
+  - `THRESHOLDS="0.78" BEST_THRESHOLD=0.78 FULL_MODE=best_only bash scripts/run_chisco_threshold_sweep_and_train.sh`
+- Blocking point:
+  - Chisco reconstruction/evaluation cannot proceed until `outputs/chisco_full/t0p78/eval_embeddings/best_by_matching_acc.topk.json` is regenerated.
+
+### ZuCo Status Update
+
+- Task-level status in the current server repo:
+  - `ZuCoSR`: complete result triplet present
+  - `ZuCoNR`: complete result triplet present
+  - `ZuCoTSR`: full-run result triplet missing in `outputs/zucotsr_full/t0p78`
+- Files confirmed present for `ZuCoSR`:
+  - `outputs/zucosr_full/t0p78/best_summary.json`
+  - `outputs/zucosr_full/t0p78/epoch_history.json`
+  - `outputs/zucosr_full/t0p78/eval_embeddings/best_by_matching_acc.topk.json`
+- Files confirmed present for `ZuCoNR`:
+  - `outputs/zuconr_full/t0p78/best_summary.json`
+  - `outputs/zuconr_full/t0p78/epoch_history.json`
+  - `outputs/zuconr_full/t0p78/eval_embeddings/best_by_matching_acc.topk.json`
+- Files missing for `ZuCoTSR`:
+  - `outputs/zucotsr_full/t0p78/best_summary.json`
+  - `outputs/zucotsr_full/t0p78/epoch_history.json`
+  - `outputs/zucotsr_full/t0p78/eval_embeddings/best_by_matching_acc.topk.json`
+- Current recovered concept-level numbers:
+  - `ZuCoSR`: `best_acc = 0.9842324934302056`, `mean_cos = 0.9570751173600548`
+  - `ZuCoNR`: `best_acc = 0.938960788101217`, `mean_cos = 0.8981179994852451`
+- Notes:
+  - A visible terminal screenshot showed `ZuCoTSR` training reaching epoch 49 with `matching_acc=0.9570` and `mean_cos=0.9579`, but the corresponding persisted full-run JSON outputs were not found in the expected directory.
+- Next required command:
+  - `THRESHOLDS="0.78" BEST_THRESHOLD=0.78 FULL_MODE=best_only bash scripts/run_zuco_threshold_sweep_and_train.sh ZuCoTSR`
+
+### External LLM Check
+
+- A third-party OpenAI-compatible endpoint was manually tested on the server:
+  - `https://cdn.aiswing.fun/v1/chat/completions`
+- Result:
+  - Returned a valid `chat.completion` response with `choices[0].message.content`
+  - Therefore the current `semantic_guided_decoder/sen_llm.py` can use this endpoint without code changes
+- Important operational note:
+  - An API key was exposed in terminal screenshots during manual testing and should be rotated before any real reconstruction run.
+
+## 2026-05-26
+
+### ZuCo Status Update
+
+- `ZuCoTSR` full-run result triplet was later confirmed present under:
+  - `outputs/zucotsr_full/t0p78/best_summary.json`
+  - `outputs/zucotsr_full/t0p78/epoch_history.json`
+  - `outputs/zucotsr_full/t0p78/eval_embeddings/best_by_matching_acc.topk.json`
+- Therefore `ZuCoSR / ZuCoNR / ZuCoTSR` all reached the same concept-level completion state for `t0p78`.
+
+### Reconstruction Reliability Update
+
+- `semantic_guided_decoder/sen_llm.py` was upgraded to better support unstable third-party OpenAI-compatible endpoints.
+- Added behavior:
+  - request timeout retries via `llm.max_retries` and `llm.retry_backoff_sec`
+  - incremental partial save for long runs
+  - resume from existing reconstruction output / partial output
+  - per-sample error capture so one failed request does not abort the full run
+- Additional storage-oriented changes:
+  - default `flush_every` increased to `20`
+  - prompt text is omitted from saved reconstruction records by default
+  - partial JSON is written in compact form to reduce disk usage
+
+### New ZuCo Reconstruction Scripts
+
+- Added:
+  - `scripts/run_zuco_reconstruction_eval.sh`
+  - `scripts/dsub_zuco_reconstruction_eval.sh`
+- Purpose:
+  - generate reconstruction config for a chosen ZuCo task
+  - run `semantic_guided_decoder/sen_llm.py`
+  - run `scripts/evaluate_reconstruction.py`
+  - support node submission for paper-style sentence-level evaluation
+
+### Server Runtime Note
+
+- During direct server reconstruction on `ZuCoNR`, execution reached hundreds of processed samples and then failed with:
+  - `OSError: [Errno 122] Disk quota exceeded`
+- This was treated as a storage/logging issue rather than an LLM API correctness issue, because successful candidate generation had already been observed before the failure.
