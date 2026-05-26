@@ -102,6 +102,28 @@ def mean_pool(last_hidden_state, attention_mask):
     return summed / denom
 
 
+def resolve_torch_dtype(device: str, runtime_cfg: dict):
+    dtype_name = str(runtime_cfg.get("torch_dtype", "auto")).strip().lower()
+    if dtype_name in ("", "auto"):
+        if str(device).startswith("cuda"):
+            if hasattr(torch, "bfloat16"):
+                return torch.bfloat16
+            return torch.float16
+        return torch.float32
+
+    mapping = {
+        "float32": torch.float32,
+        "fp32": torch.float32,
+        "float16": torch.float16,
+        "fp16": torch.float16,
+        "bfloat16": torch.bfloat16,
+        "bf16": torch.bfloat16,
+    }
+    if dtype_name not in mapping:
+        raise ValueError(f"Unsupported torch_dtype={dtype_name}")
+    return mapping[dtype_name]
+
+
 @torch.no_grad()
 def encode_texts(
     texts: List[str],
@@ -144,12 +166,14 @@ def main():
     batch_size = int(cfg["runtime"].get("batch_size", 32))
     max_length = int(cfg["runtime"].get("max_length", 128))
     truncate_dim = int(cfg["runtime"].get("truncate_dim", 256))
+    torch_dtype = resolve_torch_dtype(device, cfg["runtime"])
 
     tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
     model = AutoModel.from_pretrained(
         model_name,
         trust_remote_code=True,
         low_cpu_mem_usage=False,
+        torch_dtype=torch_dtype,
     ).eval().to(device)
 
     sentence_df = read_table(cfg["inputs"]["sentences_file"])
@@ -191,6 +215,7 @@ def main():
 
     print(f"[OK] sentence_embeddings.pt: {len(sentences)} x {sentence_emb.shape[-1]}")
     print(f"[OK] word_embeddings.pt: {len(keys)} x {word_emb.shape[-1]}")
+    print(f"[OK] model dtype: {torch_dtype}")
     print(f"[OUT] {out_dir}")
 
 
