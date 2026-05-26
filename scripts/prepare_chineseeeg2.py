@@ -493,6 +493,7 @@ def main():
                         skipped.append((zip_path.name, asset_key, "missing_run_or_session"))
                         continue
 
+                    events_df = read_events_from_zip(zf, asset_group["events"])
                     chapter_index = chapter_from_run(session, run_number)
                     chapter_text = materials.get(session, {}).get(chapter_index) if chapter_index is not None else None
                     sentences = split_sentences(chapter_text) if chapter_text else []
@@ -504,7 +505,6 @@ def main():
                         )
                         continue
 
-                    events_df = read_events_from_zip(zf, asset_group["events"])
                     with tempfile.TemporaryDirectory(prefix="chineseeeg2_") as temp_dir:
                         vhdr_path = extract_run_to_temp(zf, asset_group, Path(temp_dir))
                         raw = mne.io.read_raw_brainvision(str(vhdr_path), preload=True, verbose=False)
